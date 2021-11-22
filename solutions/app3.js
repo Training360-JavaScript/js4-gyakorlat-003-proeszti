@@ -24,13 +24,25 @@
  * @returns {[{}, {}] | []} objektumok tömbjével tér vissza vagy hiba esetén 
  * üres tömbbel
  */
- const getMovies = async (url = '') => {
-    
+// let movieData = null;
+// const getMovieData = () => movieData;
+const getMovies = async (url = '') => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        let movieData = data;
+        return movieData;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+
+
 };
 
 /**
  * TODO: exportáld ki helyesen a getMovies függvényt!
  */
 export {
-    
+    getMovies,
 }
